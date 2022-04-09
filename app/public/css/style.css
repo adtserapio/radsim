@@ -1,0 +1,150 @@
+* {
+    margin: 0; 
+    padding: 0;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-family: 'Roboto';
+}
+
+html, body {
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden;
+    animation: fadeIn linear 1.25s;
+}
+
+.alert {
+    margin: 0.5em;
+    font-weight: 700;
+    font-size: 15px;
+    width: 20%;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Roboto'
+}
+
+.invalid {
+    border: 2px solid red;
+    color: red;
+}
+
+.success {
+    border: 2px solid #009B72;
+    color: #009B72;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1}
+}
+
+
+.query-image {
+    margin: 0.5em;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    margin-top: 1em;
+    width: 25%;
+    border: 2px solid #009B72;
+    color: #009B72;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-weight: bold;
+}
+
+p {
+    color: white;
+    background-color: #009B72;
+    padding: 1em 0.5em;
+    text-align: center;
+    width: 100%;
+}
+
+.row-1 {
+    width: 100%;
+}
+
+.query-image {
+    border: 4px solid #009B72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sample {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button:active {
+    background-color: #009B72;
+    color: white;
+}
+
+img, h1, p {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    border: 4px solid white;
+}
+
+input:checked + label img {
+    border: 4px solid #009B72;
+    transition: 0.4s;
+}
+
+input:not(:checked) + label img {
+    transition: 0.4s;
+}
+
+h1 {
+    font-size: 45px;   
+    font-weight: 900;
+    margin: 0.2em;
+}
+
+p {
+    font-size: 18px;   
+    font-weight: 400;
+}
+h1, p {
+    font-family: 'Roboto';
+    text-align: 'center';
+}
+
+span.color-span {
+    color: #009B72;
+}

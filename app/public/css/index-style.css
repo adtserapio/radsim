@@ -1,0 +1,91 @@
+* {
+    margin: 0; 
+    padding: 0;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-family: 'Roboto';
+}
+
+html, body {
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden;
+    animation: fadeIn linear 1.25s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1}
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+}
+
+.auth {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+.auth input {
+    padding: 0.25em;
+    padding-left: 1em;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.token {
+    margin: 1em;
+}
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 900;
+    margin: 1em;
+}
+
+input {
+    font-size: 16px;
+}
+
+
+p {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 0.5em;
+}
+
+span.color-span {
+    color: #009B72;
+}
+
+button {
+    width: 100%;
+    margin-top: 1em;
+    border: 2px solid #009B72;
+    color: #009B72;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:active {
+    background-color: #009B72;
+    color: white;
+}
