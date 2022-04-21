@@ -9,48 +9,61 @@
         <link type="text/css" rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
-
-
+        <!-- Display 'Thank You!'' message if final set -->
         <div class="container"> 
+        <% if (current_set != 3) { %>
             <h1>Viz<span class="color-span">Sim </span> </h1>
+           
             <div class="sample">
-
-                <p>Select the most similar images to the following image </p>
-
-                <% if (message == 'Success!') { %>
-                    <div class="alert success"><%= message %></div>
-                <% } %>
-
-                <img class="query-image" src="images/<%= query['path'] %>" width=150 height=150/>
-
-                <form action="/vote" method="POST">
-                    <div class="row-1">
-
-                        <% for(var i=0; i < 5; i++) { %>
-                            <input name="<%= samples[i]['id'] %>" type="checkbox" id="<%= samples[i]['id'] %>" />
-                                <label for="<%= samples[i]['id'] %>">
-                                    <img src="images/<%= samples[i]['path'] %>" width=100 height=100/>
-                                </label>
-                         <% } %>
-
-                    </div>
-                    <div class="row-2">
-
-                         <% for(var i=5; i < 10; i++) { %>
-                            <input name="<%= samples[i]['id'] %>" type="checkbox" id="<%= samples[i]['id'] %>" />
-                                <label for="<%= samples[i]['id'] %>">
-                                    <img src="images/<%= samples[i]['path'] %>" width=100 height=100/>
-                                </label>
-                         <% } %>
-
-                    </div>
-
-                    <input name="query_<%= query['id'] %>" type="hidden" />      
-                    <input name="user_<%= user_id %>" type="hidden" />                 
-
-                    <button type="submit"">SUBMIT</button>
-                </form>
+    
+                    <p>Select the most similar images to the following image </p>
+    
+                    <% if (message == 'Success!') { %>
+                        <div class="alert success"><%= message %></div>
+                    <% } %>
+    
+                    <img class="query-image" src="images/set_<%= current_set %>_query.jpg" width=150 height=150/>
+    
+                    <form action="/vote" method="POST">
+                        <div class="row-1">
+    
+                            <% for(var i=1; i < 6; i++) { %>
+                                <input name="<%= i %>" type="checkbox" id="<%= i %>" />
+                                    <label for="<%= i %>">
+                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" width=100 height=100/>
+                                    </label>
+                             <% } %>
+    
+                        </div>
+                        <div class="row-2">
+    
+                             <% for(var i=6; i <= 10; i++) { %>
+                                <input name="<%= i %>" type="checkbox" id="<%= i %>" />
+                                    <label for="<%= i %>">
+                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" width=100 height=100/>
+                                    </label>
+                             <% } %>
+    
+                        </div>
+    
+                        <input name="user_<%= user_id %>" type="hidden" />       
+                        <input name="set_<%= current_set %>" type="hidden" />                
+    
+                        <button type="submit"">SUBMIT</button>
+                    </form>
             </div>
+        <% } %>
+
+        <% if (current_set == 3) { %>
+            <h1> Thank you for <span class="color-span"> participating! </span> </h1>
+        <% } %>
+
         </div>
+
+
+
+
+
+        
     </body>
 </html>
