@@ -62,29 +62,20 @@ app
         }
     })
 
+
     .post("/vote", async (req, res) => {
         data = Object.keys(req.body)
-
         let set = data.filter(function (field) {
             return field.includes("set_");
         })[0];
-
-        console.log(set)
-
         let user_id = data.filter(function (field) {
             return field.includes("user_");
         })[0];
-
         let similar_ids = data.filter(function (field) {
             return !field.includes("set_") && !field.includes("user_");
         });
-
         req.flash('message', 'Success!');
-
-        console.log(similar_ids)
-
         let current_set = parseInt(set.replace('set_', '')) + 1
-
         for (let i = 0; i < similar_ids.length; i++) {
             let command = `INSERT INTO votes (set_id, similar_id, user_id) VALUES (
                         '${set.replace('set_', '')}', 
@@ -92,22 +83,18 @@ app
                         '${user_id.replace('user_', '')}');
 
                     `
-
-            console.log(command)
             database.execute(command)
         }
-
         command = `UPDATE users SET current_set = '${current_set}' WHERE (id = '${user_id.replace('user_', '')}');`;
-        
-        console.log(command)
-
         database.execute(command)
-
         req.flash('user_id', user_id.replace('user_', ''));
         req.flash('current_set', current_set);
-  
         res.redirect(307, '/home')
     })
+
+
+
+
     .listen(PORT, () => {
         console.log(`Server is running on port ${PORT}.`);
     })

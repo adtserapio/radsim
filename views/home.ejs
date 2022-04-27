@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> VizSim </title>
+        <title> RadSim </title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" 
@@ -11,8 +11,8 @@
     <body>
         <!-- Display 'Thank You!'' message if final set -->
         <div class="container"> 
-        <% if (current_set != 3) { %>
-            <h1>Viz<span class="color-span">Sim </span> </h1>
+        <% if (current_set != 50) { %>
+            <h1>Rad<span class="color-span">Sim </span> </h1>
            
             <div class="sample">
     
@@ -22,7 +22,7 @@
                         <div class="alert success"><%= message %></div>
                     <% } %>
     
-                    <img class="query-image" src="images/set_<%= current_set %>_query.jpg" width=150 height=150/>
+                    <img class="query-image" src="images/set_<%= current_set %>_query.jpg" style="width: 20vh; height: 20vh"/>
     
                     <form action="/vote" method="POST">
                         <div class="row-1">
@@ -30,7 +30,7 @@
                             <% for(var i=1; i < 6; i++) { %>
                                 <input name="<%= i %>" type="checkbox" id="<%= i %>" />
                                     <label for="<%= i %>">
-                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" width=100 height=100/>
+                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" style="width: 16vh; height: 16vh" />
                                     </label>
                              <% } %>
     
@@ -40,7 +40,7 @@
                              <% for(var i=6; i <= 10; i++) { %>
                                 <input name="<%= i %>" type="checkbox" id="<%= i %>" />
                                     <label for="<%= i %>">
-                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" width=100 height=100/>
+                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" style="width: 16vh; height: 16vh"/>
                                     </label>
                              <% } %>
     
