@@ -15,8 +15,16 @@
             <h1>Rad<span class="color-span">Sim </span> </h1>
            
             <div class="sample">
-    
-                    <p>Select the most similar images to the following image </p>
+
+                    <% if (current_set <= 25) { %>
+                        <p>Select the most similar images to the following X-ray image </p>
+                    <% } %>
+
+                    <% if (current_set > 25 && current_set < 51) { %>
+                        <p>Select the most similar images to the following CT scan image based
+                            <br/> on the subject's weight </p>
+                    <% } %>
+
     
                     <% if (message == 'Success!') { %>
                         <div class="alert success"><%= message %></div>
@@ -54,7 +62,7 @@
             </div>
         <% } %>
 
-        <% if (current_set == 3) { %>
+        <% if (current_set == 50) { %>
             <h1> Thank you for <span class="color-span"> participating! </span> </h1>
         <% } %>
 
