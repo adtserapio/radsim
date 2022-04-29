@@ -29,6 +29,10 @@
                     <% if (message == 'Success!') { %>
                         <div class="alert success"><%= message %></div>
                     <% } %>
+
+                    <% if (message == 'Invalid!') { %>
+                        <div class="alert invalid"><%= message %></div>
+                    <% } %>
     
                     <img class="query-image" src="images/set_<%= current_set %>_query.jpg" style="width: 20vh; height: 20vh"/>
     

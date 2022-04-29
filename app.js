@@ -66,27 +66,36 @@ app
     .post("/vote", async (req, res) => {
         data = Object.keys(req.body)
         let set = data.filter(function (field) {
-            return field.includes("set_");
+            return field.includes("set_")
         })[0];
         let user_id = data.filter(function (field) {
-            return field.includes("user_");
+            return field.includes("user_")
         })[0];
         let similar_ids = data.filter(function (field) {
-            return !field.includes("set_") && !field.includes("user_");
+            return !field.includes("set_") && !field.includes("user_")
         });
-        req.flash('message', 'Success!');
-        let current_set = parseInt(set.replace('set_', '')) + 1
-        for (let i = 0; i < similar_ids.length; i++) {
-            let command = `INSERT INTO votes (set_id, similar_id, user_id) VALUES (
-                        '${set.replace('set_', '')}', 
-                        '${similar_ids[i]}', 
-                        '${user_id.replace('user_', '')}');
 
-                    `
+        let current_set = parseInt(set.replace('set_', ''))
+
+        if (similar_ids.length == 5) {
+            current_set += 1
+            req.flash('message', 'Success!');
+            for (let i = 0; i < similar_ids.length; i++) {
+                let command = `INSERT INTO votes (set_id, similar_id, user_id) VALUES (
+                            '${set.replace('set_', '')}', 
+                            '${similar_ids[i]}', 
+                            '${user_id.replace('user_', '')}');
+    
+                        `
+                database.execute(command)
+            }
+            command = `UPDATE users SET current_set = '${current_set}' WHERE (id = '${user_id.replace('user_', '')}');`;
             database.execute(command)
         }
-        command = `UPDATE users SET current_set = '${current_set}' WHERE (id = '${user_id.replace('user_', '')}');`;
-        database.execute(command)
+        else {
+            req.flash('message', 'Invalid!');
+        }
+        
         req.flash('user_id', user_id.replace('user_', ''));
         req.flash('current_set', current_set);
         res.redirect(307, '/home')
