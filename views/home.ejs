@@ -12,16 +12,15 @@
         <!-- Display 'Thank You!'' message if final set -->
         <div class="container"> 
         <% if (current_set != 50) { %>
-            <h1>Rad<span class="color-span">Sim </span> </h1>
            
             <div class="sample">
 
                     <% if (current_set <= 25) { %>
-                        <p>Select the most similar images to the following X-ray image </p>
+                        <p>Select the <b>FIVE</b> most similar images to the following X-ray image </p>
                     <% } %>
 
                     <% if (current_set > 25 && current_set < 51) { %>
-                        <p>Select the most similar images to the following CT scan image based
+                        <p>Select the <b>FIVE</b> most similar images to the following CT scan image based
                             <br/> on the subject's weight </p>
                     <% } %>
 
@@ -34,7 +33,7 @@
                         <div class="alert invalid"><%= message %></div>
                     <% } %>
     
-                    <img class="query-image" src="images/set_<%= current_set %>_query.jpg" style="width: 20vh; height: 20vh"/>
+                    <img class="query-image" src="images/set_<%= current_set %>_query.jpg" style="width: 25vh; height: 25vh"/>
     
                     <form action="/vote" method="POST">
                         <div class="row-1">
@@ -42,7 +41,7 @@
                             <% for(var i=1; i < 6; i++) { %>
                                 <input name="<%= i %>" type="checkbox" id="<%= i %>" />
                                     <label for="<%= i %>">
-                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" style="width: 16vh; height: 16vh" />
+                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" style="width: 20vh; height: 20vh" />
                                     </label>
                              <% } %>
     
@@ -52,7 +51,7 @@
                              <% for(var i=6; i <= 10; i++) { %>
                                 <input name="<%= i %>" type="checkbox" id="<%= i %>" />
                                     <label for="<%= i %>">
-                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" style="width: 16vh; height: 16vh"/>
+                                        <img src="images/set_<%= current_set %>_similar_<%= i %>.jpg" style="width: 20vh; height: 20vh"/>
                                     </label>
                              <% } %>
     
